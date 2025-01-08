@@ -7,7 +7,7 @@ fi
 
 TASK_ID=$1
 DEV_COMMENT=$2
-Push=${3:-no} #default is no push
+PUSH=${3:-no} #default is no push
 REPO_PATH=${4:-"."} #default is current directory
 
 CSV_FILE="ex_git/tasks.csv"
