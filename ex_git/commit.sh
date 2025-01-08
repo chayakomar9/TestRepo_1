@@ -30,7 +30,7 @@ do
         #Change to the repository directory if path is provided
         cd "$REPO_PATH" || { echo "Repository path not found!"; exit 1; }
 
-        #Fetch the latest branches to ensure we're up to date
+        #fetch the latest branches to ensure we're up to date
         git fetch || { echo "Failed to fetch remote branches!"; exit 1; }
         #Ensure we're on the correct branch
         git checkout "$BRANCH" || { echo "Branch $BRANCH not found!"; exit 1; }
