@@ -19,9 +19,9 @@ do
     if [ "$CSV_TASK_ID" == "TaskID" ]; then #skip the header row
         continue
     fi
-    echo "$CSV_TASK_ID"
     #If we find a match for TASK_ID, create the commit message
     if [ "$CSV_TASK_ID" == "$TASK_ID" ]; then
+        echo "$CSV_TASK_ID"
         TASK_DESC=$CSV_DESC
         BRANCH=$CSV_BRANCH
         DEV_NAME=$CSV_DEV
