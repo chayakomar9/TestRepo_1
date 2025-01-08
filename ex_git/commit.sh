@@ -6,7 +6,6 @@ if [ "$#" -lt 2 ]; then
 fi
 
 TASK_ID=$1
-echo "$TASK_ID"
 DEV_COMMENT=$2
 PUSH=${3:-no} #default is no push
 REPO_PATH=${4:-"."} #default is current directory
@@ -21,6 +20,7 @@ do
     fi
     #If we find a match for TASK_ID, create the commit message
     if [ "$CSV_TASK_ID" == "$TASK_ID" ]; then
+        echo "$CSV_TASK_ID"
         TASK_DESC=$CSV_DESC
         BRANCH=$CSV_BRANCH
         DEV_NAME=$CSV_DEV
