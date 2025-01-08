@@ -18,7 +18,7 @@ do
     if [ "$CSV_TASK_ID" == "TaskID" ]; then #skip the header row
         continue
     fi
-    
+
     #If we find a match for TASK_ID, create the commit message
     if [ "$CSV_TASK_ID" == "$TASK_ID" ]; then
         TASK_DESC=$CSV_DESC
@@ -39,7 +39,6 @@ do
         #Commit message format
         COMMIT_MESSAGE="$TASK_ID - $CURRENT_DATE_TIME - $BRANCH - $DEV_NAME - $TASK_DESC - $DEV_COMMENT"
 
-        echo "Staging files..."
         #Stage all changes
         git add . || { echo "Failed to stage changes!"; exit 1; }
 
