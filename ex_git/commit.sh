@@ -18,14 +18,13 @@ do
     if [ "$CSV_TASK_ID" == "TaskID" ]; then #skip the header row
         continue
     fi
-
+    echo "$CSV_TASK_ID"
     #If we find a match for TASK_ID, create the commit message
     if [ "$CSV_TASK_ID" == "$TASK_ID" ]; then
         TASK_DESC=$CSV_DESC
         BRANCH=$CSV_BRANCH
         DEV_NAME=$CSV_DEV
         GITHUB_URL=$CSV_GITHUB_URL
-
         CURRENT_DATE_TIME=$(date +"%Y%m%d_%H%M%S")
 
         #Change to the repository directory if path is provided
@@ -45,7 +44,7 @@ do
         #Commit with the generated message
         git commit -m "$COMMIT_MESSAGE" || { echo "Commit failed!"; exit 1; }
 
-        #Push changes if 'push' is specified
+        #push changes if 'push' is specified
         if [ "$PUSH" == "yes" ]; then
             git push origin "$BRANCH" || { echo "Push failed!"; exit 1; }
             echo "Changes pushed to GitHub."
@@ -53,7 +52,7 @@ do
             echo "Commit completed, but not pushed to GitHub."
         fi
 
-        #Exit the loop since we found the task
+        #exit the loop since we found the task
         exit 0
     fi
 
